@@ -1,0 +1,22 @@
+{
+  "name": "lambda-framework-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sls offline start",
+    "deploy:dev": "sls deploy --stage dev",
+    "deploy:stage": "sls deploy --stage stage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^12.0.4"
+  },
+  "dependencies": {
+    "https": "^1.0.0",
+    "node-fetch": "^3.3.0"
+  }
+}
