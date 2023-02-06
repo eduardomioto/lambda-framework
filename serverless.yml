@@ -19,12 +19,12 @@ provider:
   runtime: nodejs12.x
 
 functions:
-  example:
-    handler: functions/example.handler
+  holidays:
+    handler: functions/holidays.handler
     events:
       - http:
-          path: contact
-          method: post
+          path: holidays
+          method: get
 
 
 

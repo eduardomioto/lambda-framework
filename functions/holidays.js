@@ -1,4 +1,5 @@
 var https = require('https');
+require('dotenv').config()
 
 exports.handler = async function(event, context) {
   return await doRequest(event, context);  
@@ -9,26 +10,17 @@ function doRequest(event, context) {
 
   context.callbackWaitsForEmptyEventLoop = false
 
-  console.log(event.body);
-  const body = JSON.parse(event.body);
+  const token = process.env.CALENDARIFIC_TOKEN;
 
-  console.log(body.form_data);
-  console.log(body.id);
-
-  var post_data = JSON.stringify(body.form_data);
+  console.log('token:', token);
 
   // An object of options to indicate where to post to
   var options = {
       protocol: 'https:',
-      host: 'localhost',
+      host: 'calendarific.com',
       port: '443',
-      path: `definePath/${body.id}`,
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Basic xpto_token}`
-      }
+      path: `/api/v2/holidays?api_key=${token}&country=BR&year=2023`,
+      method: 'GET'
   };
 
   console.log(options);
@@ -64,8 +56,6 @@ function doRequest(event, context) {
 
   });
 
-  // post the data
-  req.write(post_data);
   req.end();
 
 });
